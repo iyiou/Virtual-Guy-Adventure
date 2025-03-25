@@ -70,8 +70,18 @@ public class PlayerLogic : MonoBehaviour
                 isJumping = true;
 
 
+                doubleJump = true;
 
                 ActivateJumpTime();
+            }
+            else{
+
+                if(doubleJump == true){
+                    isJumping = true;
+                    doubleJump = false;
+
+                    ActivateJumpTime(); 
+                }
             }
         }
         // Pular
