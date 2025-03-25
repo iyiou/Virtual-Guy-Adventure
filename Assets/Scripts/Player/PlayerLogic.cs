@@ -12,11 +12,11 @@ public class PlayerLogic : MonoBehaviour
     public LimitPlayer leftCollision;
     public LimitPlayer footCollision;
     public float speed;
-    public float jumpForce; // Variável que define a força de pulo
     public float jumpForceY; // Variável que define a força de pulo eixo Y
+    public float jumpForceX; // Variável que define a força de pulo eixo X
     private bool isJumping; // Variável de estado de pulo
-    
-    public bool doubleJump;
+    private bool doubleJump; // Variável de pulo duplo
+    private bool wallJump; // Variável de pulo na parede
     private Coroutine coroutineJump; // Variável para limitar o tempo de pulo 
 
     public Rigidbody2D rigidbody2d; // Variável para acessar propriedades físicas do player;
@@ -26,7 +26,7 @@ public class PlayerLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        wallJump = true; // Habilitando pulo na parede ao iniciar o jogo
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class PlayerLogic : MonoBehaviour
         // Move
         Move();
         Jump();
-
+        WallJump();
     }
     //Movimentação do player
     private void Move()
@@ -104,7 +104,8 @@ public class PlayerLogic : MonoBehaviour
     private IEnumerator JumpTime()
     {
         yield return new WaitForSeconds(0.3f); // Permitir 0.3s para o player pular
-        isJumping = false;// desativa a variável de pulo
+        isJumping = false;// Desativa a variável de pulo
+        jumpForceX = 0; // Zerar a força no Eixo X, após o reset
     }
 
     // 
@@ -116,13 +117,46 @@ public class PlayerLogic : MonoBehaviour
             {
                 rigidbody2d.velocity = Vector3.zero; // zerar forças nos eixos do rigidbody2D                
                 rigidbody2d.gravityScale = 0; // Altera a propriedade para fazer o player subir
-                Vector3 jumpDirection = new Vector3(0, jumpForceY, 0); // Direcionar o pulo
+                Vector3 jumpDirection = new Vector3(jumpForceX, jumpForceY, 0); // Direcionar o pulo
                 transform.position += jumpDirection * speed * Time.deltaTime; // Pulo
             }
         }
         else
         {
             rigidbody2d.gravityScale = 4; // Faz o player cair
+        }
+    }
+
+    private void WallJump(){
+        // Verificar se esta no chão para pular na parede novamente
+        if(footCollision.isLimit == true){
+            wallJump = true;
+        }
+        // Verifica se está habilitado pular na parede
+        if(wallJump == false){
+            return;
+        }
+        // Verifica condições para efetuar pulo na parede
+        if(footCollision.isLimit == false && headCollision.isLimit == false &&
+        (leftCollision.isLimit == true || rightCollision.isLimit == true)){
+            // Obter entrada do usuário para efetuar pulo
+            if(Input.GetButtonDown("Jump")){
+                //Aplicar força eixoX na direção oposta da parede encostada
+                if(rightCollision.isLimit == true){
+                    jumpForceX = jumpForceY * -1;
+                }
+                else{
+                    jumpForceX = 0;
+                }
+                isJumping = true;   // Habilitar pulo
+                
+                doubleJump = true;  // Habilitar pulo duplo
+
+                wallJump = false;   // Desabilitar pulo na parede
+
+                ActivateJumpTime(); // Novo tempo de pulo
+            }
+
         }
     }
 
