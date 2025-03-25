@@ -241,6 +241,9 @@ MonoBehaviour:
   leftCollision: {fileID: 921075631}
   footCollision: {fileID: 999342223}
   speed: 10
+  jumpForce: 1.5
+  doubleJump: 0
+  rigidbody2d: {fileID: 411531186}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
