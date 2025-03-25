@@ -115,7 +115,7 @@ public class PlayerLogic : MonoBehaviour
         {
             if (headCollision.isLimit == false) // Verifica se a há colisão acima do player
             {
-                rigidbody2d.velocity = Vector3.zero; // zerar forças nos eixos do rigidbody2D                
+                ResetPhysicalMove(); // zerar forças nos eixos do rigidbody2D                
                 rigidbody2d.gravityScale = 0; // Altera a propriedade para fazer o player subir
                 Vector3 jumpDirection = new Vector3(jumpForceX, jumpForceY, 0); // Direcionar o pulo
                 transform.position += jumpDirection * speed * Time.deltaTime; // Pulo
@@ -161,6 +161,9 @@ public class PlayerLogic : MonoBehaviour
             }
 
         }
+    }
+    public void ResetPhysicalMove(){
+        rigidbody2d.velocity = Vector3.zero;
     }
 
 }
