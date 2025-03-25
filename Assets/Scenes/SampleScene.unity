@@ -219,8 +219,8 @@ Transform:
   - {fileID: 986276203}
   - {fileID: 1929511327}
   - {fileID: 921075630}
-  - {fileID: 999342222}
   - {fileID: 736167950}
+  - {fileID: 999342222}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &411531189
@@ -236,7 +236,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipSprite: {fileID: 986276205}
-  speed: 3
+  headCollision: {fileID: 736167951}
+  rightCollision: {fileID: 1929511328}
+  leftCollision: {fileID: 921075631}
+  footCollision: {fileID: 999342223}
+  speed: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +754,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.13231015}
+  m_Offset: {x: 0, y: -0.0014359206}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -761,7 +765,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.7353797}
+  m_Size: {x: 1, y: 0.9971281}
   m_EdgeRadius: 0
 --- !u!212 &1350618773
 SpriteRenderer:
@@ -880,7 +884,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.13231015}
+  m_Offset: {x: 0, y: 0.017259538}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -891,7 +895,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.7353797}
+  m_Size: {x: 1, y: 1.0345191}
   m_EdgeRadius: 0
 --- !u!212 &1839855784
 SpriteRenderer:

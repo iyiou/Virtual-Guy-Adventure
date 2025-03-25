@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PlayerLogic : MonoBehaviour
 {
-    // Variavel de controle
-    public Rotation flipSprite;
-    public LimitPlayer headCollision;
+    // Variaveis de controle
+    public Rotation flipSprite; // Variável de girar sprite
+    public LimitPlayer headCollision; // Variável de informação de limite
     public LimitPlayer rightCollision;
     public LimitPlayer leftCollision;
     public LimitPlayer footCollision;
@@ -23,11 +23,11 @@ public class PlayerLogic : MonoBehaviour
     void Update()
     {
         // Move
-        move();
+        Move();
 
     }
     //Movimentação do player
-    private void move()
+    private void Move()
     {
         // Input 
         float eixoX = Input.GetAxis("Horizontal");
