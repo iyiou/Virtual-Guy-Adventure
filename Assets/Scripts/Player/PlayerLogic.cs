@@ -13,7 +13,7 @@ public class PlayerLogic : MonoBehaviour
     public LimitPlayer footCollision;
     public float speed;
     public float jumpForceY; // Variável que define a força de pulo eixo Y
-    public float jumpForceX; // Variável que define a força de pulo eixo X
+    private float jumpForceX; // Variável que define a força de pulo eixo X
     private bool isJumping; // Variável de estado de pulo
     private bool doubleJump; // Variável de pulo duplo
     private bool wallJump; // Variável de pulo na parede
@@ -144,6 +144,9 @@ public class PlayerLogic : MonoBehaviour
                 //Aplicar força eixoX na direção oposta da parede encostada
                 if(rightCollision.isLimit == true){
                     jumpForceX = jumpForceY * -1;
+                }
+                else if(leftCollision.isLimit == true){   
+                    jumpForceX = jumpForceY;
                 }
                 else{
                     jumpForceX = 0;
