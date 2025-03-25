@@ -13,6 +13,7 @@ public class PlayerLogic : MonoBehaviour
     public LimitPlayer footCollision;
     public float speed;
     public float jumpForce; // Variável que define a força de pulo
+    public float jumpForceY; // Variável que define a força de pulo eixo Y
     private bool isJumping; // Variável de estado de pulo
     
     public bool doubleJump;
@@ -115,7 +116,7 @@ public class PlayerLogic : MonoBehaviour
             {
                 rigidbody2d.velocity = Vector3.zero; // zerar forças nos eixos do rigidbody2D                
                 rigidbody2d.gravityScale = 0; // Altera a propriedade para fazer o player subir
-                Vector3 jumpDirection = new Vector3(0, jumpForce, 0); // Direcionar o pulo
+                Vector3 jumpDirection = new Vector3(0, jumpForceY, 0); // Direcionar o pulo
                 transform.position += jumpDirection * speed * Time.deltaTime; // Pulo
             }
         }
