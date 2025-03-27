@@ -162,6 +162,14 @@ public class PlayerLogic : MonoBehaviour
 
         }
     }
+    public void ThrowPlayer(){
+        int sortearValor = new System.Random().Next(0, 2);  // Sortear numero entre (0,1), direção de arremesso 
+
+        int directionX = sortearValor == 0? - 1000: 1000;   // Definir direção em X arremesso
+        rigidbody2d.AddForce(new Vector2(directionX, 1000));// Aplica força no player
+
+    }
+    // Função para zerar as forças nos eixos do rigidbody2D    
     public void ResetPhysicalMove(){
         rigidbody2d.velocity = Vector3.zero;
     }
