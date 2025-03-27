@@ -18,8 +18,10 @@ public class PlayerLogic : MonoBehaviour
     private bool doubleJump; // Variável de pulo duplo
     private bool wallJump; // Variável de pulo na parede
     private Coroutine coroutineJump; // Variável para limitar o tempo de pulo 
-
     public Rigidbody2D rigidbody2d; // Variável para acessar propriedades físicas do player;
+
+    // Animação
+    public AnimationPlayer animationPlayer;
 
 
 
