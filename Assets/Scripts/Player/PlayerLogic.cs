@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 
@@ -58,6 +59,25 @@ public class PlayerLogic : MonoBehaviour
         {
             flipSprite.Left();
         }
+
+        // Verificar colisão/ground <-> Animações de movimentação
+        if (footCollision.isLimit == true)
+        {
+            if (eixoX != 0)
+            {
+                animationPlayer.RunningPlayer(); // Ativar animação correndo
+            }
+            else
+            {
+                animationPlayer.IdlePlayer(); // Ativa animação parado
+            }
+        }
+        else{
+            animationPlayer.FallingPlayer();
+        }
+
+
+        // Movimentar PLayer
         Vector3 direction = new Vector3(eixoX, 0, 0);
         transform.position += direction * speed * Time.deltaTime;
 
@@ -70,6 +90,8 @@ public class PlayerLogic : MonoBehaviour
         {
             if (footCollision.isLimit == true && isJumping == false)
             { // Verifica se o player estão no chão
+                animationPlayer.JumpingPlayer();
+                
                 isJumping = true;
 
 
