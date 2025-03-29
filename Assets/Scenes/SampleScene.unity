@@ -244,6 +244,7 @@ MonoBehaviour:
   speed: 10
   jumpForceY: 1.5
   rigidbody2d: {fileID: 411531186}
+  animationPlayer: {fileID: 986276207}
 --- !u!114 &411531190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,6 +665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b55668a5b656e4496b78d024ca6aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 986276206}
 --- !u!1 &999342221
 GameObject:
   m_ObjectHideFlags: 0
