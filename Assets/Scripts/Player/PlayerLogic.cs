@@ -103,13 +103,14 @@ public class PlayerLogic : MonoBehaviour
             }
             else
             {
-
-                if (doubleJump == true)
+                // Verifica se pode pular
+                if (doubleJump == true) 
                 {
-                    isJumping = true;
-                    doubleJump = false;
+                    animationPlayer.DoubleJumping(); // Animação pulo duplo
+                    isJumping = true; // Verifica se o jogador esta pulando
+                    doubleJump = false; // Desabilita pulo duplo
 
-                    ActivateJumpTime();
+                    ActivateJumpTime(); // Reseta o tempo do pulo
                 }
             }
         }

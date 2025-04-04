@@ -51,4 +51,14 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetBool("Jump", false);
         animator.SetBool("Falling", false);
     }
+
+    public void DoubleJumping()
+    {
+        animator.SetTrigger("DoubleJump");
+        animator.SetBool("SlideWall", false);
+        animator.SetBool("Idle", false);
+        animator.SetBool("Run", false);
+        animator.SetBool("Jump", false);
+        animator.SetBool("Falling", false);
+    }
 }
