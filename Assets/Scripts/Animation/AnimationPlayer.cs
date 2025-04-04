@@ -13,7 +13,7 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetBool("Run", false);
         animator.SetBool("Jump", false);
         animator.SetBool("Falling", true);
-        animator.SetBool("Wall Jump", false);
+        animator.SetBool("SlideWall", false);
     }
 
     public void RunningPlayer()
@@ -22,28 +22,30 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetBool("Idle", false);
         animator.SetBool("Jump", false);
         animator.SetBool("Falling", true);
-        animator.SetBool("Wall Jump", false);
+        animator.SetBool("SlideWall", false);
     }
 
     public void JumpingPlayer()
     {
-        animator.SetBool("Jump",true);
-        animator.SetBool("Idle",false);
-        animator.SetBool("Run",false);
+        animator.SetBool("Jump", true);
+        animator.SetBool("Idle", false);
+        animator.SetBool("Run", false);
         animator.SetBool("Falling", true);
-        animator.SetBool("Wall Jump", false);
+        animator.SetBool("SlideWall", false);
     }
-    public void FallingPlayer(){
+    public void FallingPlayer()
+    {
         animator.SetBool("Falling", true);
         animator.SetBool("Idle", false);
         animator.SetBool("Run", false);
         animator.SetBool("Jump", false);
-        animator.SetBool("Wall Jump", false);
+        animator.SetBool("SlideWall", false);
 
     }
 
-    public void WallJumpPlayer(){
-        animator.SetBool("Wall Jump", true);
+    public void SlideWallPlayer()
+    {
+        animator.SetBool("SlideWall", true);
         animator.SetBool("Idle", false);
         animator.SetBool("Run", false);
         animator.SetBool("Jump", false);

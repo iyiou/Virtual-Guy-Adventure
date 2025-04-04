@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 
@@ -72,7 +70,8 @@ public class PlayerLogic : MonoBehaviour
                 animationPlayer.IdlePlayer(); // Ativa animação parado
             }
         }
-        else{
+        else
+        {
             animationPlayer.FallingPlayer();
         }
 
@@ -85,13 +84,15 @@ public class PlayerLogic : MonoBehaviour
 
     private void Jump()
     {
+
+
         // Input jump
         if (Input.GetButtonDown("Jump"))
         {
             if (footCollision.isLimit == true && isJumping == false)
             { // Verifica se o player estão no chão
                 animationPlayer.JumpingPlayer();
-                
+
                 isJumping = true;
 
 
@@ -99,13 +100,15 @@ public class PlayerLogic : MonoBehaviour
 
                 ActivateJumpTime();
             }
-            else{
+            else
+            {
 
-                if(doubleJump == true){
+                if (doubleJump == true)
+                {
                     isJumping = true;
                     doubleJump = false;
 
-                    ActivateJumpTime(); 
+                    ActivateJumpTime();
                 }
             }
         }
@@ -151,32 +154,46 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
-    private void WallJump(){
+    private void WallJump()
+    {
         // Verificar se esta no chão para pular na parede novamente
-        if(footCollision.isLimit == true){
+        if (footCollision.isLimit == true)
+        {
             wallJump = true;
         }
         // Verifica se está habilitado pular na parede
-        if(wallJump == false){
+        if (wallJump == false)
+        {
             return;
         }
         // Verifica condições para efetuar pulo na parede
-        if(footCollision.isLimit == false && headCollision.isLimit == false &&
-        (leftCollision.isLimit == true || rightCollision.isLimit == true)){
+        if (footCollision.isLimit == false && headCollision.isLimit == false &&
+        (leftCollision.isLimit == true || rightCollision.isLimit == true))
+        {
+            // Animação de deslizar na parede
+            animationPlayer.SlideWallPlayer();
+            
             // Obter entrada do usuário para efetuar pulo
-            if(Input.GetButtonDown("Jump")){
+            if (Input.GetButtonDown("Jump"))
+            {
                 //Aplicar força eixoX na direção oposta da parede encostada
-                if(rightCollision.isLimit == true){
+                if (rightCollision.isLimit == true)
+                {
                     jumpForceX = jumpForceY * -1;
                 }
-                else if(leftCollision.isLimit == true){   
+                else if (leftCollision.isLimit == true)
+                {
                     jumpForceX = jumpForceY;
                 }
-                else{
+                else
+                {
                     jumpForceX = 0;
                 }
+
+                animationPlayer.SlideWallPlayer(); // Deslizar na parede
+
                 isJumping = true;   // Habilitar pulo
-                
+
                 doubleJump = true;  // Habilitar pulo duplo
 
                 wallJump = false;   // Desabilitar pulo na parede
@@ -186,15 +203,17 @@ public class PlayerLogic : MonoBehaviour
 
         }
     }
-    public void ThrowPlayer(){
+    public void ThrowPlayer()
+    {
         int sortearValor = new System.Random().Next(0, 2);  // Sortear numero entre (0,1), direção de arremesso 
 
-        int directionX = sortearValor == 0? - 1000: 1000;   // Definir direção em X arremesso
+        int directionX = sortearValor == 0 ? -1000 : 1000;   // Definir direção em X arremesso
         rigidbody2d.AddForce(new Vector2(directionX, 1000));// Aplica força no player
 
     }
     // Função para zerar as forças nos eixos do rigidbody2D    
-    public void ResetPhysicalMove(){
+    public void ResetPhysicalMove()
+    {
         rigidbody2d.velocity = Vector3.zero;
     }
 
