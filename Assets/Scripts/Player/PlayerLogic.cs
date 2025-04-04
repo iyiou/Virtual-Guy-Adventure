@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 
@@ -180,10 +181,13 @@ public class PlayerLogic : MonoBehaviour
                 if (rightCollision.isLimit == true)
                 {
                     jumpForceX = jumpForceY * -1;
+                    flipSprite.Left();
                 }
                 else if (leftCollision.isLimit == true)
                 {
                     jumpForceX = jumpForceY;
+                    flipSprite.Right();
+                    
                 }
                 else
                 {
