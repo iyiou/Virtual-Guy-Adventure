@@ -14,8 +14,8 @@ public class PlayerDamage : MonoBehaviour
         
         animationPlayer.Damage(); // Ativar animação de dano
         playerLogic.ResetPhysicalMove();    // Resetar forças
-        
         playerLogic.ThrowPlayer();  // Arremessar
+        CanvaGameMng.Instance.DecrementLifePlayer(); // Decrementar Hp do jogador
 
     }
 }
