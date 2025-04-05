@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerLogic: {fileID: 411531189}
+  animationPlayer: {fileID: 986276207}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

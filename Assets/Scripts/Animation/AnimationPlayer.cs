@@ -61,4 +61,7 @@ public class AnimationPlayer : MonoBehaviour
         animator.SetBool("Jump", false);
         animator.SetBool("Falling", false);
     }
+    public void Damage(){
+        animator.SetTrigger("Damage");
+    }
 }
