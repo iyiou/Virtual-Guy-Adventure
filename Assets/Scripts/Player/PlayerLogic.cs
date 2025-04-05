@@ -7,11 +7,15 @@ public class PlayerLogic : MonoBehaviour
 {
     // Variaveis de controle
     public Rotation flipSprite; // Variável de girar sprite
-    public LimitPlayer headCollision; // Variável de informação de limite
+    public float speed; // Variável para definir velocidade
+    
+    // Variáveis de Limite
+    public LimitPlayer headCollision; 
     public LimitPlayer rightCollision;
     public LimitPlayer leftCollision;
     public LimitPlayer footCollision;
-    public float speed;
+    
+    
     public float jumpForceY; // Variável que define a força de pulo eixo Y
     private float jumpForceX; // Variável que define a força de pulo eixo X
     private bool isJumping; // Variável de estado de pulo
@@ -20,8 +24,8 @@ public class PlayerLogic : MonoBehaviour
     private Coroutine coroutineJump; // Variável para limitar o tempo de pulo 
     public Rigidbody2D rigidbody2d; // Variável para acessar propriedades físicas do player;
 
-    // Animação
-    public AnimationPlayer animationPlayer;
+    // Variáveis de Animação
+    public AnimationPlayer animationPlayer; // Variável para acessar atributos de animação player
 
 
 
@@ -188,7 +192,6 @@ public class PlayerLogic : MonoBehaviour
                 {
                     jumpForceX = jumpForceY;
                     flipSprite.Right();
-                    
                 }
                 else
                 {
