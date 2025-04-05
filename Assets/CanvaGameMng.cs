@@ -10,6 +10,7 @@ public class CanvaGameMng : MonoBehaviour
     #region Singleton
     public static CanvaGameMng Instance; // Variável para instanciar objetos
 
+
     public void Awake()
     {
         // Instância estatica de objetos 
@@ -20,6 +21,11 @@ public class CanvaGameMng : MonoBehaviour
         Destroy(gameObject); // Destroi o GameObject existente na cena
     }
     #endregion
+
+    public Image imgLife;
+    public Sprite[] sprLifes;
+    public int playerHP;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,3 +38,16 @@ public class CanvaGameMng : MonoBehaviour
     {
         
     }
+    // Método para verificar a decrementação de HP jogador
+    public void DecrementLifePlayer(){
+        playerHP--; // Decrementando HP do jogador
+
+        // Verificação de vidas totais
+        if(playerHP < 0){
+            // Gameover
+        }
+        else{
+            imgLife.sprite = sprLifes[playerHP];
+        }
+    }
+}
