@@ -43,7 +43,7 @@ public class CanvaGameMng : MonoBehaviour
         playerHP--; // Decrementando HP do jogador
 
         // Verificação de vidas totais
-        if(playerHP < 0){
+        if(playerHP < 1){
             // Gameover
         }
         else{
