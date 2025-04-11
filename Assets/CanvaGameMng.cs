@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CanvaGameMng : MonoBehaviour
@@ -24,8 +25,8 @@ public class CanvaGameMng : MonoBehaviour
 
     public Image imgLife;
     public Sprite[] sprLifes;
-    public int playerHP;
-
+    private int playerHP;
+    public bool gameOver;
 
     // Start is called before the first frame update
     void Start()
@@ -45,9 +46,29 @@ public class CanvaGameMng : MonoBehaviour
         // Verificação de vidas totais
         if(playerHP < 1){
             // Gameover
+            GameOver();
         }
         else{
             imgLife.sprite = sprLifes[playerHP];
         }
+    }
+    public void GameOver(){
+        gameOver = true; // Fim de jogo
+
+        playerHP = 0; // Zerar HP
+        
+        imgLife.sprite = sprLifes[playerHP]; // Atualiza o Sprite de HP
+
+
+        StartCoroutine(ResetLevel()); // Tempo para reiniciar cena
+    }
+
+    IEnumerator ResetLevel(){
+        yield return new WaitForSeconds(3f);
+        
+        ResetCurrentLevel();
+    }
+    public void ResetCurrentLevel(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
