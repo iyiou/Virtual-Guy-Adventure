@@ -64,4 +64,9 @@ public class AnimationPlayer : MonoBehaviour
     public void Damage(){
         animator.SetTrigger("Damage");
     }
+
+    public void DeathPlayer(){
+        animator.SetBool("End", true);
+        animator.SetTrigger("End");
+    }
 }
