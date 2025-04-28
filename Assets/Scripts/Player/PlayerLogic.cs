@@ -38,6 +38,8 @@ public class PlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(CanvaGameMng.Instance.gameOver == true) return; // Verifica se o jogo terminou
+        
         // Move
         Move();
         Jump();
@@ -223,6 +225,12 @@ public class PlayerLogic : MonoBehaviour
     public void ResetPhysicalMove()
     {
         rigidbody2d.velocity = Vector3.zero;
+    }
+
+    //Metodo para remover gravidade
+    public void GravityRemove(){
+        // rigibody static
+        rigidbody2d.bodyType = RigidbodyType2D.Static;
     }
 
 }
