@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     // Propriedades de acesso
     public PlayerLogic PlayerLogic => playerLogic;
-    public Animation AnimationPlayer => animationPlayer;
+    public AnimationPlayer AnimationPlayer => animationPlayer;
     public PlayerDamage PlayerDamage => playerDamage;
    
 
